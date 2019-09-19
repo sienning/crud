@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
+  [x: string]: any;
 
   uri = 'http://localhost:4000/products';
 
@@ -43,5 +44,11 @@ export class ProductsService {
       .http
       .post(`${this.uri}/update/${id}`, obj)
       .subscribe(res => console.log('Done'));
+  }
+
+  deleteProduct(id) {
+    return this
+              .http
+              .get(`${this.uri}/delete/${id}`);
   }
 }
